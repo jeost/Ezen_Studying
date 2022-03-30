@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:controller="controller.Loginpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="txtid" layoutX="62.0" layoutY="67.0" prefHeight="38.0" prefWidth="274.0" promptText="아이디" />
+      <PasswordField fx:id="txtpw" layoutX="62.0" layoutY="124.0" prefHeight="38.0" prefWidth="274.0" promptText="비밀번호" />
+      <Button fx:id="btnlogin" layoutX="62.0" layoutY="214.0" mnemonicParsing="false" onAction="#accsignip" prefHeight="72.0" prefWidth="274.0" style="-fx-background-color: #FF000000;" text="로그인" />
+      <Button fx:id="btnsignup" layoutX="281.0" layoutY="44.0" mnemonicParsing="false" onAction="#accsignup" style="-fx-background-color: #FF000000;" text="회원가입" />
+      <Button fx:id="btnfindid" layoutX="286.0" layoutY="317.0" mnemonicParsing="false" onAction="#accfindid" style="-fx-background-color: #FF000000;" text="아이디찾기" />
+      <Button fx:id="btnfindpw" layoutX="280.0" layoutY="340.0" mnemonicParsing="false" onAction="#accfindid" style="-fx-background-color: #00FF0000;" text="비밀번호찾기" />
+      <Label fx:id="labelconfirm" layoutX="62.0" layoutY="179.0" prefHeight="23.0" prefWidth="274.0" text="로그인 오류시 표시 메시지" textAlignment="CENTER" textFill="#e40c0c">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
