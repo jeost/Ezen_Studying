@@ -3,6 +3,8 @@ package controller.login;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import controller.Main;
+import dao.MemberDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,13 +44,13 @@ public class Loginpane implements Initializable {
     @FXML
     void accfindid(ActionEvent event) {
     	System.out.println(" 아이디찾기 페이지로 이동 ");
-    	Login.instance.loadpage("/view/login/Findid.fxml");
+    	Login.instance.loadpage("/view/login/findid.fxml");
     }
 
     @FXML
     void accfindpassword(ActionEvent event) {
     	System.out.println(" 패스워드찾기 페이지로 이동 ");
-    	Login.instance.loadpage("/view/login/Findpw.fxml");
+    	Login.instance.loadpage("/view/login/findpw.fxml");
     }
 
     @FXML
@@ -64,7 +66,20 @@ public class Loginpane implements Initializable {
 
     @FXML
     void login(ActionEvent event) {
-    	System.out.println(" 로그인처리");
+    	String id = txtid.getText();
+    	String pw = txtpassword.getText();
+    	
+    	boolean result = MemberDao.memberDao.login(id, pw);
+    	
+    	if(result) {
+    		//로그인 성공시 성공한 회원정보 저장
+    		Login.member = MemberDao.memberDao.getmember(id);
+    		Main.instance.loadpage("/view/home/home.fxml"); 
+    		System.out.println("로그인처리");
+    	}else {
+    		lblconfirm.setText("동일한 회원정보 없음");
+    	}
+    	
     }
 	
 	

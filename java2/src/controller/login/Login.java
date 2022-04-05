@@ -3,15 +3,16 @@ package controller.login;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dto.Member;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
 public class Login implements Initializable {
 	
@@ -21,6 +22,8 @@ public class Login implements Initializable {
 		// 2. 생성자에서 객체내 this 넣어주기 
 			// this : 현재클래스의 메모리 [ 새로운 메모리할당 X ]
 	public Login() { instance = this; }
+	
+	public static Member member;
 	
 	@FXML
 	private MediaView mediaview;// fxid
@@ -40,6 +43,13 @@ public class Login implements Initializable {
 			// 4. 미디어플레이어 시작
 			mediaPlayer.play();
 			
+			mediaPlayer.setOnEndOfMedia(new Runnable() {
+				
+				@Override
+				public void run() {
+					mediaPlayer.seek(Duration.ZERO);
+				}
+			});
 			loadpage("/view/login/loginpane.fxml");
 			
 	}

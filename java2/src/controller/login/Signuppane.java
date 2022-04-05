@@ -101,7 +101,7 @@ public class Signuppane implements Initializable {
     		alert.setContentText("회원가입 성공");
     		alert.showAndWait(); // 메시지 실행
     		//로그인 페이지로 화면전환
-    		Login.instance.loadpage("view/login/loginpane");
+    		Login.instance.loadpage("/view/login/loginpane.fxml");
     	}else {
     		System.out.println("가입 실패"); return;
     	}

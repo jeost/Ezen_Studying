@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -73,14 +74,103 @@ public class MemberDao {
 		rs = ps.executeQuery(); // select 실행 -> resultSet
 		//sql 결과
 		if(rs.next()) { // select시 결과물이 있으면(아디비번 맞으면) true 없으면 false
+//			FileOutputStream outputStream = new FileOutputStream("c:/temp/java/test.txt",true);
+//			String output = (id+","+rs.getInt(6));
+//			outputStream.write(output.getBytes());
 			return true;
 			}
 		}catch(Exception e) {System.out.println(e);}
 		return false;}
 		//아이디찾기
 	public String findId(String eMail) {
-		
+		try {
+		//SQL 작성
+		String sql = "select * from member where mEmail=?";
+		//SQL 조작
+		ps = con.prepareStatement(sql);
+		ps.setString(1, eMail);
+		//SQL 실행
+		rs=ps.executeQuery();  // select 실행문
+		//SQL 결과
+		if(rs.next()) { // 실행결과의 다음 값이 존재하면
+			return  rs.getString(2);
+		}
+		}catch(Exception e) {System.out.println(e);}
 		return null;}
 		//비밀번호찾기
-	public String findPw(String id, String eMail) {return null;}
+	public String findPw(String id, String eMail) {
+		String sql = "select * from member where mId=? and mEmail=?";
+		try {
+		ps=con.prepareStatement(sql);
+		ps.setString(1, id);
+		ps.setString(2, eMail);
+		
+		rs=ps.executeQuery();
+		
+		if(rs.next()) {
+			return rs.getString(3);
+		}
+		
+		}catch(Exception e) {System.out.println(e);}
+		return null;}
+	
+	//아이디 인수 후 회원정보 호출
+	public Member getmember(String id) {
+		try {
+			//sql작성
+			String sql = "select * from member where mId=?";
+			//sql조작
+			ps=con.prepareStatement(sql);
+			ps.setString(1, id);
+			//sql실행
+			rs = ps.executeQuery();
+			//sql결과
+			if(rs.next()) {
+				Member member = new Member(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getString(5),
+						rs.getInt(6),
+						rs.getString(7)
+						);
+						return member;
+			}
+			
+		}catch(Exception e) {System.out.println(e);} return null;
+	}
+	public boolean delete(int mNum) {
+		try {
+		//sql 작성
+			//레코드삭제 : delete from 테이블명 where 조건
+		String sql = "delete from member where mNum = ?";
+		//sql 조작
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, mNum);
+		//sql 실행
+		ps.executeUpdate();
+		//sql 결과
+		return true;
+		}catch(Exception e) {System.out.println(e);} return false;
+	}
+	
+	//회원수정 [ 회원번호[수정대상], 이메일, 주소를 인수로 받아 정보 수정 처리 ]
+	public boolean update(int mNum, String eMail, String address) {
+		try {
+		//SQL 작성
+		String sql = "update member set mEmail=?, mAddress=? where mNum=?";
+		//SQL 조작
+		ps=con.prepareStatement(sql);
+		ps.setString(1, eMail); ps.setString(2, address); ps.setInt(3, mNum);
+		//SQL 실행
+		ps.executeUpdate();
+		//SQL 결과
+		return true;
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+	
 }

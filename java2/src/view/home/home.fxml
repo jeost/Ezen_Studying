@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+
+<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.home.Home">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblloginid" layoutX="31.0" layoutY="205.0" text="이름" textFill="#ebe3e3" />
+            <Label fx:id="lblpoint" layoutX="31.0" layoutY="243.0" text="포인트" textFill="#e4d9d9" />
+            <Label fx:id="lblLogout" layoutX="138.0" layoutY="205.0" onMouseClicked="#Logout" text="로그아웃" textFill="WHITE" />
+            <Line endX="100.0" layoutX="104.0" layoutY="623.0" startX="-100.0" stroke="#f2eded" />
+            <Label layoutX="28.0" layoutY="292.0" text="Home" textFill="WHITE" />
+            <Label layoutX="134.0" layoutY="624.0" text="신고하기" textFill="WHITE" />
+            <Label layoutX="30.0" layoutY="316.0" text="공지사항" textFill="WHITE" />
+            <Label layoutX="30.0" layoutY="353.0" text="중고" textFill="WHITE" />
+            <Label layoutX="31.0" layoutY="378.0" text="남성의류" textFill="WHITE" />
+            <Label layoutX="100.0" layoutY="378.0" text="여성의류" textFill="WHITE" />
+            <Label layoutX="30.0" layoutY="403.0" text="게임기기" textFill="WHITE" />
+            <Label layoutX="101.0" layoutY="403.0" text="생활용품" textFill="WHITE" />
+            <Label layoutX="30.0" layoutY="438.0" text="커뮤니티" textFill="WHITE" />
+            <Label layoutX="31.0" layoutY="464.0" text="거래후기" textFill="WHITE" />
+            <Label fx:id="lblboard" onMouseClicked="#accboard" layoutX="86.0" layoutY="464.0" text="자유게시판" textFill="WHITE" />
+            <Label layoutX="33.0" layoutY="504.0" text="정보" textFill="WHITE" />
+            <Label layoutX="33.0" layoutY="525.0" text="내 글" textFill="WHITE" />
+            <Label fx:id="lblinfo" onMouseClicked="#accinfo" layoutX="79.0" layoutY="525.0" text="회원정보" textFill="WHITE" />
+            <Label fx:id="lbldelete" layoutX="104.0" layoutY="558.0" onMouseClicked="#delete" text="회원탈퇴" textFill="WHITE" />
+            <Label fx:id="lblupdate" onMouseClicked="#accupdate" layoutX="37.0" layoutY="558.0" text="회원수정" textFill="WHITE" />
+            <Line endX="100.0" layoutX="67.0" layoutY="307.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="100.0" layoutX="104.0" layoutY="368.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="100.0" layoutX="99.0" layoutY="453.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="100.0" layoutX="99.0" layoutY="519.0" startX="-100.0" stroke="WHITE" />
+            <Label layoutX="30.0" layoutY="593.0" text="관리자" textFill="WHITE" />
+            <Label layoutX="81.0" layoutY="593.0" text="통계" textFill="WHITE" />
+            <Line endX="100.0" layoutX="103.0" layoutY="581.0" startX="-100.0" stroke="WHITE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="16.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Desktop/ezen.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
