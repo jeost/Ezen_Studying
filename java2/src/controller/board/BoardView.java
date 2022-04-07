@@ -99,7 +99,7 @@ public class BoardView implements Initializable{
     }
 
     @FXML
-    void rewrite(ActionEvent event) {
+    void rewrite(ActionEvent event) { // 댓글 작성 버튼 눌렀을때
     	String rcontent = txtrecontent.getText();
     	//현재 로그인된 아이디 정보 가져오기
     	String rwrite=Login.member.getmId();
@@ -115,8 +115,7 @@ public class BoardView implements Initializable{
     		alert.setHeaderText("댓글 등록 성공");
     		alert.showAndWait();
     		txtrecontent.setText("");
-    	}else {
-    		
+    		replytableshow();
     	}
     }
     boolean upcheck = true; // 수정버튼 스위치 변수
@@ -135,7 +134,6 @@ public class BoardView implements Initializable{
     		BoardDao.boardDao.update(controller.board.Board.board.getBnum(),
     				txttitle.getText(),
     				txtcontent.getText());
-    		
     		alert.setHeaderText("수정 완료");
     		alert.showAndWait();
     		txttitle.setEditable(false);

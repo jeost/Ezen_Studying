@@ -42,6 +42,8 @@ public class Home implements Initializable{ // 실행 초기값 설정 메소드
 	private Label lblinfo;
 	@FXML
 	private Label lblboard;
+	@FXML
+	private Label lblproduct;
 	
 	public void loadpage(String page) {
 		try {
@@ -53,6 +55,7 @@ public class Home implements Initializable{ // 실행 초기값 설정 메소드
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		lblloginid.setText(Login.member.getmId()+"님");
 		lblpoint.setText("포인트 : " + Login.member.getmPoint());
+		loadpage("/view/chatting.fxml");
 	}
 	
 	@FXML
@@ -81,6 +84,7 @@ public class Home implements Initializable{ // 실행 초기값 설정 메소드
 			}
 		}
 	}
+	
 	@FXML // 회원정보
 	public void accinfo(MouseEvent e) {
 		loadpage("/view/home/info.fxml");
@@ -92,5 +96,23 @@ public class Home implements Initializable{ // 실행 초기값 설정 메소드
 	@FXML
 	public void accboard(MouseEvent e) {
 		loadpage("/view/board/board.fxml");
+	}
+	
+	public static String category;
+	@FXML
+	public void accproduct1(MouseEvent e) { //남성의류
+		loadpage("/view/product/product.fxml"); category="남성의류";
+	}
+	@FXML
+	public void accproduct2(MouseEvent e) {  //여성의류
+		loadpage("/view/product/product.fxml"); category="여성의류";
+	}
+	@FXML
+	public void accproduct3(MouseEvent e) { //생활용품
+		loadpage("/view/product/product.fxml"); category="게임기기";
+	}
+	@FXML
+	public void accproduct4(MouseEvent e) { //게임기기
+		loadpage("/view/product/product.fxml"); category="생활용품";
 	}
 }
