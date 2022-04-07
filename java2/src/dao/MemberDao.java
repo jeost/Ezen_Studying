@@ -5,11 +5,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
+import controller.login.Login;
 import dto.Member;
 
 public class MemberDao {
-
 	private Connection con; // DB연동시 사용 클래스
 	private PreparedStatement ps; // 연결된 DB 내 sQL 조작시 사용
 	private ResultSet rs; // 결과물 조작
@@ -46,6 +48,7 @@ public class MemberDao {
 	
 		//회원가입
 	public boolean signUp(Member member) {
+		
 		try {
 		// 1. SQL작성 [ 회원번호(자동)제외 모든 필드 삽입
 		String sql = "insert into member(mId,mPw,mEmail,mAddress,mPoint,mSince)values(?,?,?,?,?,?)";
@@ -64,6 +67,7 @@ public class MemberDao {
 		//로그인
 	public boolean login(String id, String pw)  { // and랑 or 사용가능
 		//sql 작성
+		Calendar c = Calendar.getInstance();
 		try {
 		String sql = "select * from member where mId=? and mPw=?";
 		//sql 조작
@@ -74,13 +78,16 @@ public class MemberDao {
 		rs = ps.executeQuery(); // select 실행 -> resultSet
 		//sql 결과
 		if(rs.next()) { // select시 결과물이 있으면(아디비번 맞으면) true 없으면 false
-//			FileOutputStream outputStream = new FileOutputStream("c:/temp/java/test.txt",true);
-//			String output = (id+","+rs.getInt(6));
-//			outputStream.write(output.getBytes());
+//			FileOutputStream fileOutputStream = new FileOutputStream("C:/Users/java/login.txt");
+//			SimpleDateFormat sdf = new SimpleDateFormat("dd"); // 날짜만 가져오기
+//			String lLog = (id+","+c.get(Calendar.DATE)); // id와 날짜 저장
+//			fileOutputStream.write(); // 마지막 로그인 날짜 저장
+//			fileOutputStream.close();
 			return true;
 			}
 		}catch(Exception e) {System.out.println(e);}
 		return false;}
+	
 		//아이디찾기
 	public String findId(String eMail) {
 		try {
@@ -168,9 +175,35 @@ public class MemberDao {
 		//SQL 결과
 		return true;
 		}catch(Exception e) {
-			System.out.println(e);
+			System.out.println("회원수정 오류"+e);
 		}
 		return false;
 	}
-	
+	//해당 회원번호로 id 찾기 메소드
+	public String getmId(int mnum) {
+		try {
+		String sql="select mid from member where mnum=?";
+		ps=con.prepareStatement(sql);
+		ps.setInt(1, mnum);
+		rs=ps.executeQuery();
+		if(rs.next()) {
+			return rs.getString(1);
+		}
+		}catch(Exception e) {
+			System.out.println("id찾기 오류"+e);
+		}return null;
+	}
+	//멤버 출석 포인트 추가
+	public void mPoint(String id) {
+		try {
+			String sql="update member set mpoint=? where mid=?";
+			
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, Login.member.getmPoint()+10);
+			ps.setString(2, id);
+			ps.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("포인트 오류"+e);
+		}
+	}
 }

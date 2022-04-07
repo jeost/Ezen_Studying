@@ -112,7 +112,7 @@ public class BoardDao {
 	//댓글 작성 메소드
 	public boolean rwrite(Reply reply) {
 		try {
-		String sql = "insert into reply(rcontent,rwrite,bnum)";
+		String sql = "insert into reply(rcontent,rwrite,bnum) values(?,?,?)";
 		ps=conn.prepareStatement(sql);
 		ps.setString(1, reply.getRcontent());
 		ps.setString(2, reply.getRwrite());
