@@ -21,7 +21,7 @@ public class BoardDao {
 	public BoardDao() { // 객체 생성시 바로 DB연동하려고 생성자에서 연동
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/javafx?serverTimezone=UTC", "root", "1234");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=UTC", "root", "1234");
 		}catch(Exception e) {
 			System.out.println("객체생성 에러 : "+e);
 		}

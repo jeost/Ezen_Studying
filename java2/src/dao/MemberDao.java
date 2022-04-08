@@ -22,7 +22,7 @@ public class MemberDao {
 		try {
 		//DB연동
 			Class.forName("com.mysql.cj.jdbc.Driver");//1. DB 드라이버 가져오기
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3307/javafx?serverTimezone=UTC", "root", "1234");//2. DB 주소 연결
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=UTC", "root", "1234");//2. DB 주소 연결
 		}catch(Exception e) {System.out.println(e);}
 	}
 	
@@ -41,7 +41,7 @@ public class MemberDao {
 			//SQL 결과
 			if(rs.next()) { // 중복이 있으면 true 반환 없으면 false 반환
 				return true;
-			}
+				}
 			}catch(Exception e) {System.out.println(e);}
 			return false;
 		}
@@ -51,7 +51,7 @@ public class MemberDao {
 		
 		try {
 		// 1. SQL작성 [ 회원번호(자동)제외 모든 필드 삽입
-		String sql = "insert into member(mId,mPw,mEmail,mAddress,mPoint,mSince)values(?,?,?,?,?,?)";
+		String sql = "insert into member(mId,mpassword,mEmail,mAddress,mPoint,mSince)values(?,?,?,?,?,?)";
 		// 2. SQL조작
 		ps = con.prepareStatement(sql); // prepare어쩌고 인터페이스 내 연결된 db에 sql 넣기
 		ps.setString(1, member.getmId());
@@ -69,7 +69,7 @@ public class MemberDao {
 		//sql 작성
 		Calendar c = Calendar.getInstance();
 		try {
-		String sql = "select * from member where mId=? and mPw=?";
+		String sql = "select * from member where mId=? and mpassword=?";
 		//sql 조작
 		ps = con.prepareStatement(sql);
 		ps.setString(1, id);

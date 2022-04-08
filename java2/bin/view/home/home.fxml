@@ -19,18 +19,18 @@
             <Label layoutX="134.0" layoutY="624.0" text="신고하기" textFill="WHITE" />
             <Label layoutX="30.0" layoutY="316.0" text="공지사항" textFill="WHITE" />
             <Label layoutX="30.0" layoutY="353.0" text="중고" textFill="WHITE" />
-            <Label layoutX="31.0" layoutY="378.0" text="남성의류" textFill="WHITE" />
-            <Label layoutX="100.0" layoutY="378.0" text="여성의류" textFill="WHITE" />
-            <Label layoutX="30.0" layoutY="403.0" text="게임기기" textFill="WHITE" />
-            <Label layoutX="101.0" layoutY="403.0" text="생활용품" textFill="WHITE" />
+            <Label fx:id="lblproduct" layoutX="31.0" layoutY="378.0" onMouseClicked="#accproduct1" text="남성의류" textFill="WHITE" />
+            <Label fx:id="lblproduct" layoutX="100.0" layoutY="378.0" onMouseClicked="#accproduct2" text="여성의류" textFill="WHITE" />
+            <Label fx:id="lblproduct" layoutX="30.0" layoutY="403.0" onMouseClicked="#accproduct3" text="게임기기" textFill="WHITE" />
+            <Label fx:id="lblproduct" layoutX="101.0" layoutY="403.0" onMouseClicked="#accproduct4" text="생활용품" textFill="WHITE" />
             <Label layoutX="30.0" layoutY="438.0" text="커뮤니티" textFill="WHITE" />
             <Label layoutX="31.0" layoutY="464.0" text="거래후기" textFill="WHITE" />
-            <Label fx:id="lblboard" onMouseClicked="#accboard" layoutX="86.0" layoutY="464.0" text="자유게시판" textFill="WHITE" />
+            <Label fx:id="lblboard" layoutX="86.0" layoutY="464.0" onMouseClicked="#accboard" text="자유게시판" textFill="WHITE" />
             <Label layoutX="33.0" layoutY="504.0" text="정보" textFill="WHITE" />
             <Label layoutX="33.0" layoutY="525.0" text="내 글" textFill="WHITE" />
-            <Label fx:id="lblinfo" onMouseClicked="#accinfo" layoutX="79.0" layoutY="525.0" text="회원정보" textFill="WHITE" />
+            <Label fx:id="lblinfo" layoutX="79.0" layoutY="525.0" onMouseClicked="#accinfo" text="회원정보" textFill="WHITE" />
             <Label fx:id="lbldelete" layoutX="104.0" layoutY="558.0" onMouseClicked="#delete" text="회원탈퇴" textFill="WHITE" />
-            <Label fx:id="lblupdate" onMouseClicked="#accupdate" layoutX="37.0" layoutY="558.0" text="회원수정" textFill="WHITE" />
+            <Label fx:id="lblupdate" layoutX="37.0" layoutY="558.0" onMouseClicked="#accupdate" text="회원수정" textFill="WHITE" />
             <Line endX="100.0" layoutX="67.0" layoutY="307.0" startX="-100.0" stroke="WHITE" />
             <Line endX="100.0" layoutX="104.0" layoutY="368.0" startX="-100.0" stroke="WHITE" />
             <Line endX="100.0" layoutX="99.0" layoutY="453.0" startX="-100.0" stroke="WHITE" />

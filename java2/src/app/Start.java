@@ -1,5 +1,8 @@
 package app;
 
+import controller.Chatting;
+import controller.login.Login;
+import dao.RoomDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,8 +18,7 @@ public class Start extends Application {
 		
 		// 5. FXML 파일[ 컨테이너 ] 불러오기
 		Parent parent = 
-				FXMLLoader.load( getClass().getResource("/view/main.fxml"));
-																//  /패키지명(폴더)/파일명.확장자
+				FXMLLoader.load( getClass().getResource("/view/main.fxml"));//  /패키지명(폴더)/파일명.확장자									
 		// 6. 씬 객체 -> 컨테이너 
 		Scene scene = new Scene(parent);
 		// 7. 씬 -> 스테이지 
@@ -36,12 +38,23 @@ public class Start extends Application {
 			
 			//외부 스타일시트 적용
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			
-			
+			//stage = 윈도우 창
+				//닫기버튼을 눌렀을 때 이벤트
+				stage.setOnCloseRequest(e -> {
+					if(Login.member!=null) {
+						//방 접속명단 삭제
+						RoomDao.roomDao.roomLiveDelete(Login.member.getmId());
+						//채팅방 삭제
+						if(Chatting.selectroom!=null) { // 방에 접속된 상태면
+							RoomDao.roomDao.roomdelete(Chatting.selectroom.getRonum());
+						}
+						//선택 방 초기화
+						Chatting.selectroom=null;
+					}
+				});
 		stage.setResizable(false); // 4. 스테이지 크기 변경 불가 
 		stage.setTitle("이젠마켓"); // 2.스테이지 창 이름
-		stage.show(); // 1. 스테이지 열기 
-		
+		stage.show(); // 1. 스테이지 열기
 	}
 	public static void main(String[] args) {
 		
