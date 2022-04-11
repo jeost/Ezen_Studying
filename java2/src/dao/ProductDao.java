@@ -24,7 +24,7 @@ public class ProductDao {
 	//제품 등록
 	public boolean add(Product product) {
 		try {
-		String sql = "insert into product(pname,pimg,pcontent,pcategory,pprice,pactivation,mnum) values(?,?,?,?,?,?,?)";
+		String sql = "insert into product(pname,pimage,pcontent,pcategory,pprice,pactivation,mnum) values(?,?,?,?,?,?,?)";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, product.getPname());
 		ps.setString(2, product.getPimg());
@@ -41,12 +41,17 @@ public class ProductDao {
 	public ArrayList<Product> list(String category, String search){
 		ArrayList<Product> productlist = new ArrayList<>();
 		try {
-			if(search==null) { // 검색어 없으면
-				String sql = "select * from product where pcategory=? order by pnum desc";
+			String sql = null;
+			if(category == null && search == null) {
+				sql = "select * from product";
+				ps = con.prepareStatement(sql);
+			}
+		else if(search==null) { // 검색어 없으면
+				sql = "select * from product where pcategory=? order by pnum desc";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, category);
 			}else { // 검색어 있으면
-				String sql = "select * from product where pcategory=? and pname like '%"+search+"%' order by pnum desc";
+				sql = "select * from product where pcategory=? and pname like '%"+search+"%' order by pnum desc";
 				ps = con.prepareStatement(sql);
 				ps.setString(1, category);
 			}
@@ -64,9 +69,7 @@ public class ProductDao {
 					rs.getInt(9));
 				productlist.add(product);
 			}return productlist;
-			
 		}catch(Exception e) {System.out.println("제품출력오류"+e);}
-		
 		return null;
 	}
 	//제품 조회
@@ -80,13 +83,12 @@ public class ProductDao {
 			ps.executeUpdate();
 			return true;
 		}catch(Exception e) {System.out.println("제품삭제오류"+e);}
-		
 		return false;
 	}
 	//제품 수정
 	public boolean update(Product product) {
 		try {
-			String sql="update product set pname=?, pimg=?, pcontent=?, pcategory=?, pprice=? where pnum=?";
+			String sql="update product set pname=?, pimage=?, pcontent=?, pcategory=?, pprice=? where pnum=?";
 			ps=con.prepareStatement(sql);
 			ps.setString(1, product.getPname());
 			ps.setString(2, product.getPimg());

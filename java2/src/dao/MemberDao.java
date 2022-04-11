@@ -1,12 +1,14 @@
 package dao;
 
-import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import controller.login.Login;
 import dto.Member;
@@ -51,7 +53,7 @@ public class MemberDao {
 		
 		try {
 		// 1. SQL작성 [ 회원번호(자동)제외 모든 필드 삽입
-		String sql = "insert into member(mId,mpassword,mEmail,mAddress,mPoint,mSince)values(?,?,?,?,?,?)";
+		String sql = "insert into member(mId,mpassword,mEmail,mAddress,mPoint,mSince,lastlogindate)values(?,?,?,?,?,?,?)";
 		// 2. SQL조작
 		ps = con.prepareStatement(sql); // prepare어쩌고 인터페이스 내 연결된 db에 sql 넣기
 		ps.setString(1, member.getmId());
@@ -60,6 +62,7 @@ public class MemberDao {
 		ps.setString(4, member.getmAddress());
 		ps.setInt(5, member.getmPoint());
 		ps.setString(6, member.getmSince());
+		ps.setString(7, member.getmLdate());
 		ps.executeUpdate();
 		return true;
 		}catch(Exception e) {System.out.println(e);}
@@ -67,7 +70,6 @@ public class MemberDao {
 		//로그인
 	public boolean login(String id, String pw)  { // and랑 or 사용가능
 		//sql 작성
-		Calendar c = Calendar.getInstance();
 		try {
 		String sql = "select * from member where mId=? and mpassword=?";
 		//sql 조작
@@ -78,16 +80,29 @@ public class MemberDao {
 		rs = ps.executeQuery(); // select 실행 -> resultSet
 		//sql 결과
 		if(rs.next()) { // select시 결과물이 있으면(아디비번 맞으면) true 없으면 false
-//			FileOutputStream fileOutputStream = new FileOutputStream("C:/Users/java/login.txt");
-//			SimpleDateFormat sdf = new SimpleDateFormat("dd"); // 날짜만 가져오기
-//			String lLog = (id+","+c.get(Calendar.DATE)); // id와 날짜 저장
-//			fileOutputStream.write(); // 마지막 로그인 날짜 저장
-//			fileOutputStream.close();
+			
+	    	boolean result = lLogin(id);
+	    	if(result) {mPoint(id);}
 			return true;
 			}
 		}catch(Exception e) {System.out.println(e);}
 		return false;}
-	
+	public boolean lLogin(String id) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String today = format.format(new Date());
+		Member temp = getmember(id);
+		if(temp.getmLdate().equals(today)) { 
+    	String sql="update member set lastlogindate=? where mid=?";
+		try {
+		ps=con.prepareStatement(sql);
+		ps.setString(1, today);
+		ps.setString(2, id);
+		ps.executeUpdate();
+		return true;
+			}catch(Exception e) {System.out.println("마지막로그인 오류 "+e);}
+		}
+		return false;
+	}
 		//아이디찾기
 	public String findId(String eMail) {
 		try {
@@ -116,8 +131,7 @@ public class MemberDao {
 		
 		if(rs.next()) {
 			return rs.getString(3);
-		}
-		
+			}
 		}catch(Exception e) {System.out.println(e);}
 		return null;}
 	
@@ -140,7 +154,8 @@ public class MemberDao {
 						rs.getString(4),
 						rs.getString(5),
 						rs.getInt(6),
-						rs.getString(7)
+						rs.getString(7),
+						rs.getString(8)
 						);
 						return member;
 			}
@@ -206,4 +221,43 @@ public class MemberDao {
 			System.out.println("포인트 오류"+e);
 		}
 	}
+	//카테고리별 개수
+	public Map<String, Integer> countCategory(){
+		Map<String, Integer> map = new HashMap<>();
+		try {
+		String sql = "select pcategory, count(*) from product group by pcategory";
+		ps = con.prepareStatement(sql);
+		return map;
+		}catch(Exception e) {
+			System.out.println("카테고리별 개수 오류 "+e);
+		} return null;
+	}
+	//전체 회원수 반환
+	public int countTotal(String tname) {
+		String sql = "select count(*) from" +tname;
+		try {
+			ps=con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+				//조회결과의 첫번째 필드 반환
+			}
+		}catch(Exception e) {System.out.println("통계 반환 오류 "+e);}
+		return 0;
+	}
+	//날짜별 통계 반환
+	public Map<String, Integer>datetotal(String tname, String date){
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		String sql = "select substring_index( "+date+",' ', 1), count(*) from "+tname+" group by substring_index("+date+", ' ', 1)"; // 날짜랑 시간 공백기준으로 분리해서 자르기
+		try {
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				map.put(rs.getString(1), rs.getInt(2));
+			}
+			return map;
+		}catch(Exception e) {System.out.println("날짜별 반환 오류 "+e);}
+		return null;
+	}
+	
 }

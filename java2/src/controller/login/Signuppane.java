@@ -64,6 +64,7 @@ public class Signuppane implements Initializable {
     	
     	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     	String since = format.format(new Date());
+    	String lastlogindate = format.format(new Date());
     	
     	//유효성검사
     		//id중복체크
@@ -90,7 +91,7 @@ public class Signuppane implements Initializable {
     }
     	//모든 유효성검사 통과시 DB에 저장
     		//객체화 [ 회원번호없음, id, pw, email, address,  포인트없음, since
-    	Member member = new Member(0, id, pw, email, address, 0, since);
+    	Member member = new Member(0, id, pw, email, address, 0, since, lastlogindate);
     	//DB객체 내 메소드 호출
     	boolean result = MemberDao.memberDao.signUp(member);
     	if(result) { //회원가입 성공시

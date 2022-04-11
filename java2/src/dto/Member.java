@@ -19,8 +19,9 @@ public class Member {
 	private String mAddress; // 주소
 	private int mPoint;
 	private String mSince; // 가입일
+	private String mLdate;
 	public Member() {}
-	public Member(int mNum, String mId, String mPw, String mEMail, String mAddress, int mPoint, String mSince) {
+	public Member(int mNum, String mId, String mPw, String mEMail, String mAddress, int mPoint, String mSince, String mLdate) {
 		super();
 		this.mNum = mNum;
 		this.mId = mId;
@@ -29,6 +30,7 @@ public class Member {
 		this.mAddress = mAddress;
 		this.mPoint = mPoint;
 		this.mSince = mSince;
+		this.mLdate = mLdate;
 	}
 	
 	public static void sendMail(String 받는메일, String 내용) {
@@ -106,6 +108,12 @@ public class Member {
 	}
 	public void setmSince(String mSince) {
 		this.mSince = mSince;
+	}
+	public String getmLdate() {
+		return mLdate;
+	}
+	public void setmLdate(String mLdate) {
+		this.mLdate = mLdate;
 	}
 	
 }

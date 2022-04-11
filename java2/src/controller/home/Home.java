@@ -44,6 +44,8 @@ public class Home implements Initializable{ // 실행 초기값 설정 메소드
 	private Label lblboard;
 	@FXML
 	private Label lblproduct;
+	@FXML
+	private Label accrecord;
 	
 	public void loadpage(String page) {
 		try {
@@ -114,5 +116,9 @@ public class Home implements Initializable{ // 실행 초기값 설정 메소드
 	@FXML
 	public void accproduct4(MouseEvent e) { //게임기기
 		loadpage("/view/product/product.fxml"); category="생활용품";
+	}
+	@FXML
+	public void accrecord(MouseEvent e) { // 통계
+		loadpage("/view/record.fxml");
 	}
 }
