@@ -80,9 +80,6 @@ public class MemberDao {
 		rs = ps.executeQuery(); // select 실행 -> resultSet
 		//sql 결과
 		if(rs.next()) { // select시 결과물이 있으면(아디비번 맞으면) true 없으면 false
-			
-	    	boolean result = lLogin(id);
-	    	if(result) {mPoint(id);}
 			return true;
 			}
 		}catch(Exception e) {System.out.println(e);}
@@ -91,7 +88,8 @@ public class MemberDao {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String today = format.format(new Date());
 		Member temp = getmember(id);
-		if(temp.getmLdate().equals(today)) { 
+		System.out.println(temp.getmLdate());
+		if(!temp.getmLdate().equals(today)) { //마지막 로그인날짜랑 오늘이 같지 않으면
     	String sql="update member set lastlogindate=? where mid=?";
 		try {
 		ps=con.prepareStatement(sql);

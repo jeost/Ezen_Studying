@@ -75,6 +75,8 @@ public class Loginpane implements Initializable {
     		//로그인 성공시 성공한 회원정보 저장
     		Login.member = MemberDao.memberDao.getmember(id);
     		Main.instance.loadpage("/view/home/home.fxml"); 
+    		boolean result1 = MemberDao.memberDao.lLogin(id); // 마지막 로그인날짜랑 오늘이 같지 않으면
+	    	if(result1) MemberDao.memberDao.mPoint(id);
     		System.out.println("로그인처리");
     	}else {
     		lblconfirm.setText("동일한 회원정보 없음");
