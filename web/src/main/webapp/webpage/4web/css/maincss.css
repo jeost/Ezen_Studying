@@ -1,0 +1,36 @@
+/* 기본값 제거 */
+*{margin:0px; padding:0px;}
+/* 링크 기본값 제거 */
+a{text-decoration: none; color:black;}
+a:hover {color:aqua;}
+.header_logo{font-size: 20px;}
+@font-face {
+    font-family: 'HoengseongHanu';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/HoengseongHanu.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{font-family: HoengseongHanu;}
+.carousel-item img{
+	width:100%;
+}
+.item .title{
+	font-size:20px;
+}
+.item .content{
+	font-size:10px;
+	margin-bottom:50px;
+}
+.item .price1{
+	color:#dddddd;
+	text-decoration: line-through; /* 취소선 */
+}
+.item .price2{
+	font-size:20px;
+}
+.titleline{
+	border-bottom: solid 1px aqua; width:200px; margin:0 auto;
+}
+.questtitle{
+	background-color: white;
+}

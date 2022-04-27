@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>중간체크 상대경로</title>
+	<style type="text/css">
+	h3{text-align: center;}
+	#container{width:600px; height:600px;}
+	#a, #b, #c, #d, #e, #f{
+	border-radius:20px;
+	box-shadow: 3px 3px 10px white;
+	width:100px;
+	height:100px;
+	background-color: yellow;
+	font-weight: bold;
+	text-align: center;
+	padding:10px;
+	}
+	#up{position:absolute; top:40px; background-color: green; width:600px; height:300px;}
+	#a{position:absolute; top:160px; left:80px;}
+	#b{position:absolute; top:80px; left:250px;}
+	#c{position:absolute; top:160px; left:420px;}
+	#down{position:absolute; top:340px; background-color: green; width:600px; height:300px;}
+	#d{position:relative; top:60px; left:80px;}
+	#e{position:relative; left:250px;}
+	#f{position:relative; bottom:180px; left:420px;}
+	</style>
+</head>
+<body>
+	<h3>프로그래밍 강좌</h3>
+	<div id="container">
+		<div id="up">
+			<div id="a">CSS 강좌</div>
+			<div id="b">HTML 강좌</div>
+			<div id="c">파이썬 강좌</div>
+		</div>
+		<div id="down">
+			<div id="d">C# 강좌</div>
+			<div id="e">PHP 강좌</div>
+			<div id="f">자바 강좌</div>
+		</div>
+	</div>
+</body>
+</html>

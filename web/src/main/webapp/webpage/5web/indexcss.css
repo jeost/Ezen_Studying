@@ -1,0 +1,19 @@
+@charset "EUC-KR";
+*{font-family: "Nanum Gothic"
+}
+
+a{text-decoration: none; color:black;}
+a:hover{color: aqua}
+.tophead{margin-left:20px; font-size:12px;}
+.sidemenu{margin-top:80px; left:10px; position:fixed;}
+.content{margin-top:80px;}
+li{list-style-type: none; font: bold;}
+ul,li {padding:0;}
+.gt{border-bottom: solid 1px gray;}
+.fg{color:gray;}
+.insta{width:100%; text-align: center; margin-top: 200px;}
+.center{width:100%; text-align: center; margin: auto;}
+.nj{margin-top: 150px;}
+.njt{font-size: 12px;}
+.dd{width:170px;}
+.footer{margin-top:200px; border-top: solid 1px gray; padding-top: 80px;}

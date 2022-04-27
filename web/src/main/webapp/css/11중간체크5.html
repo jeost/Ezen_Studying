@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>중간체크5</title>
+	<style type="text/css">
+		form{
+			width : 700px; /* 가로 사이즈 */
+			margin:0 auto; /* 박스모델 가운데정렬 */ 
+		}
+		table{
+			width:700px;
+			border-top: solid 3px black;
+		}
+		td{
+			border-bottom: solid 1px #dddddd;
+		}
+		input{
+			width: 500px; /* 입력상자 사이즈 */
+			height: 30px; /* 입력상자 높이 */
+		}
+		textarea{
+			width:500px;
+			height:100px;
+		}
+		.col1{
+			width:100px;
+		}
+		#buttons{
+			width:700px;
+			text-align: right;
+		}
+		#buttons button{
+			padding: 5px 20px; /* 안쪽 여백 */
+			margin: 20px 10px; /* 바깥 여백 */
+		}
+	</style>
+</head>
+<body>
+	<form> <!-- 폼 양식[데이터 전송시 사용] -->
+		<table> <!-- 표 태그 -->
+			<tr> <!-- 테이블 행 태그 -->
+				<td class="col1">이름</td> <td class="col1">홍길동</td>
+			</tr>
+			<tr>
+				<td class="col1">제목</td><td class="col1"><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="col1">내용</td><td class="col1"><textarea rows="" cols=""></textarea></td>
+			</tr>
+			<tr>
+				<td class="col1">첨부파일</td>
+				<td class="col1"><input type="file"></td>
+			</tr>
+		</table>
+		<div id="buttons"> <!-- 구역 -->
+			<button>저장하기</button><button>목록보기</button>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<style type="text/css">
+	@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+	/* css 주석처리 */
+	/*선택자{속성명} */
+	*{font-family: "궁서"; color: blue;}
+													/*윗줄*/	/*취소선*/	/*밑줄*/
+	h3{font-family: Noto Sans KR; text-decoration: overline line-through underline;
+	text-align: center; /*폰트 정렬*/
+	text-shadow: 3px 3px 5px orange; /* 그림자 */
+				/*x축 y축 깊이 색상*/
+	}
+	p{ /* p태그를 선택해 꾸미기*/
+		font-family: 굴림체;
+		background-color: gray;
+		line-height: 200%; /*줄간격*/
+		font-size: 30px;
+		font-style: italic;
+		font-weight: bold;
+		letter-spacing: 2px; /* 글자 간격*/
+		word-spacing: 5px; /* 단어 간격*/
+	}
+	a{/*a태그(하이퍼링크) 꾸미기*/
+		text-decoration: none; /*밑줄 제거*/
+		color: black;
+	}
+	a:hover{ /*a태그에 마우스를 올릴 시*/	
+		color:orange;
+	}
+	a:visited{ /*a태그에 방문 기록이 있으면*/
+		color:blue;
+	}
+	a:active{ /* a태그를 클릭시*/
+		color:green;
+	}
+	</style>
+</head>
+<body>
+
+	<!--
+	 선택자{속성명=값}
+		1. font-family : 글꼴
+		2. font-size : 글씨 크기
+		3. color : 글자 색
+		4. text-decoration : 밑줄, 윗줄, 취소선
+			overline 취소선
+			underline 밑줄
+			line-through 취소선
+		5. text-align : 텍스트 정렬
+			center : 가운데 정렬
+			left : 왼쪽 정렬
+			right : 오른쪽 정렬
+		6. text-shadow : 그림자
+			x축 y축 깊이 색상 순서대로
+		7. line-height : 줄 간격
+		8. letter-spacing : 글자 간격
+		9. word-spacing : 단어 간격
+		10. font-style : italic : 글자 기울기
+		11. font-weight : bold : 글자 굵게
+		12. a태그 이벤트 선택자
+			a:hover
+			a:active
+			a:visited
+	 -->
+	<h3>A</h3>
+	<p>평소에 고갤을 눈팅만 하던 사람입니다만 도저히 작금의 상황에 개탄을 금할 수가없어 이렇게 글을 남깁니다.
+<br>
+제가 알기로는 고겜갤러 여러분 점잖고 선량한 분들로 알고 있었습니다.
+<br>
+하지만 제가 잘못 생각하고 있었나 봅니다. 지금 며칠째 이러는 겁니까?</p>
+
+<a href="www.naver.com">네이버</a>
+</body>
+</html>
