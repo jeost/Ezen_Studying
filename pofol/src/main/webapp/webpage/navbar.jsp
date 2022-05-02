@@ -1,16 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/css.css" rel="stylesheet">
 </head>
 <body>
-<div> <!-- ³×ºñ¹Ù ½ÃÀÛ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<div> <!-- ë„¤ë¹„ë°” ì‹œìž‘ -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-dark navigationbar">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="mainpage.jsp">KRVtuberDEX</a>
+    <a class="navbar-brand text-white" href="/pofol/webpage/mainpage.jsp">KRVtuberDEX</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,31 +23,31 @@
           <a class="nav-link active text-white" aria-current="page" href="mainpage.jsp">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">°³¹ßÀÚ¿¡°Ô ¹®ÀÇÇÏ±â</a>
+          <a class="nav-link text-white" href="#">ê°œë°œìžì—ê²Œ ë¬¸ì˜í•˜ê¸°</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            È¸»ç±âÁØ ºÐ·ù
+            íšŒì‚¬ê¸°ì¤€ ë¶„ë¥˜
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">ÇÃ·³¹ö½º</a></li>
+            <li><a class="dropdown-item" href="#">í”ŒëŸ¼ë²„ìŠ¤</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">ÄÚÀÌÅÙ</a></li>
+            <li><a class="dropdown-item" href="#">ì½”ì´í…</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">V-LUP</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">ÀÏ·çÀü¶óÀÌºê</a></li>
+            <li><a class="dropdown-item" href="#">ì¼ë£¨ì „ë¼ì´ë¸Œ</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">°³ÀÎ¼¼</a></li>
+            <li><a class="dropdown-item" href="#">ê°œì¸ì„¸</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">´ÏÁö»êÁöKRÀº ¾ø´Â È¸»çÀÔ´Ï´Ù</a>
+          <a class="nav-link disabled">ë‹ˆì§€ì‚°ì§€KRì€ ì—†ëŠ” íšŒì‚¬ìž…ë‹ˆë‹¤</a>
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2 search" type="search" placeholder="¹öÆ©¹ö ÀÌ¸§ °Ë»ö" aria-label="Search">
-        <button class="btn btn-outline-info" id="searchbutton" type="submit">°Ë»ö</button>
+        <input class="form-control me-2 search" type="search" placeholder="ë²„íŠœë²„ ì´ë¦„ ê²€ìƒ‰" aria-label="Search">
+        <button class="btn btn-outline-info" id="searchbutton" type="submit">ê²€ìƒ‰</button>
       </form>
     </div>
   </div>
